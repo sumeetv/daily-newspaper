@@ -1,0 +1,39 @@
+# API Keys and Authentication
+weather_api_key: "your_weather_api_key"
+todoist_token: "your_todoist_api_token"
+google_credentials_path: "path/to/google_credentials.json"
+
+# Location Settings
+location: "San Francisco, CA"  # For weather API
+
+# RSS Feed Sources
+rss_feeds:
+  - "https://news.ycombinator.com/rss"
+  - "https://feeds.a.dj.com/rss/RSSWorldNews.xml"
+  - "https://feeds.bbci.co.uk/news/world/rss.xml"
+  - "https://rss.nytimes.com/services/xml/rss/nyt/World.xml"
+
+# Output Settings
+output_format: "markdown"  # options: markdown, html
+output_directory: "newspapers"
+
+# Template Settings
+template_directory: "templates"
+default_template: "newspaper.md.j2"
+
+# Logging Settings
+log_level: "INFO"
+log_file: "newspaper_generator.log"
+
+# Optional Features
+include_weather: true
+include_tasks: true
+include_calendar: true
+include_news: true
+
+# News Settings
+news_items_per_feed: 5
+news_summary_length: 200  # characters
+
+# Time Settings
+timezone: "America/Los_Angeles"

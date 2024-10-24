@@ -1,0 +1,46 @@
+# Daily Briefing for {{ date }}
+
+## Weather Overview
+🌡️ **Current**: {{ weather.current.temp_c }}°C ({{ weather.current.temp_f }}°F)
+{{ weather.current.condition.text }}
+
+**Today's Forecast**:
+- High: {{ weather.forecast.forecastday[0].day.maxtemp_c }}°C
+- Low: {{ weather.forecast.forecastday[0].day.mintemp_c }}°C
+- Chance of Rain: {{ weather.forecast.forecastday[0].day.daily_chance_of_rain }}%
+
+## Today's Schedule
+{% if events %}
+**Calendar Events:**
+{% for event in events %}
+- {{ event.start.get('dateTime', event.start.get('date'))|string|truncate(16, True, '') }} - {{ event.summary }}
+{%- endfor %}
+{% else %}
+No events scheduled for today.
+{% endif %}
+
+## Tasks
+{% if tasks %}
+**Today's Tasks:**
+{% for task in tasks %}
+- [ ] {{ task.content }} {% if task.due and task.due.date %}(Due: {{ task.due.date }}){% endif %}
+{%- endfor %}
+{% else %}
+No tasks due today.
+{% endif %}
+
+## News Headlines
+{% if news %}
+**Top Stories:**
+{% for item in news[:5] %}
+### {{ item.title }}
+{{ item.summary|truncate(200) }}
+[Read More]({{ item.link }})
+
+{% endfor %}
+{% else %}
+No news updates available.
+{% endif %}
+
+---
+*Generated on {{ date }} using Daily Newspaper Generator*
