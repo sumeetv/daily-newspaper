@@ -1,12 +1,12 @@
 # Daily Briefing for {{ date }}
 
 ## Weather Overview
-🌡️ **Current**: {{ weather.current.temp_c }}°C ({{ weather.current.temp_f }}°F)
-{{ weather.current.condition.text }}
+🌡️ **Current**: {{ weather.current.temp_f }}°F and {{ weather.current.condition.text }}
 
-**Today's Forecast**:
-- High: {{ weather.forecast.forecastday[0].day.maxtemp_c }}°C
-- Low: {{ weather.forecast.forecastday[0].day.mintemp_c }}°C
+**Today's Forecast**: {{ weather.forecast.forecastday[0].day.condition.text }}
+- High: {{ weather.forecast.forecastday[0].day.maxtemp_f }}°F
+- Low: {{ weather.forecast.forecastday[0].day.mintemp_f }}°F
+- Wind: {{ weather.forecast.forecastday[0].day.maxwind_mph }}mph
 - Chance of Rain: {{ weather.forecast.forecastday[0].day.daily_chance_of_rain }}%
 
 ## Today's Schedule
