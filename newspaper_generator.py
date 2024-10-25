@@ -9,7 +9,6 @@ import yaml
 import jinja2
 import feedparser
 from todoist_api_python.api import TodoistAPI
-from google.oauth2.credentials import Credentials
 from google_auth_oauthlib.flow import InstalledAppFlow
 from google.auth.transport.requests import Request
 from googleapiclient.discovery import build
@@ -107,8 +106,6 @@ class DailyNewspaper:
         except Exception as e:
             self.logger.error(f"Error fetching calendar events: {e}")
             return []
-        
-        return events_result.get('items', [])
 
     async def get_news(self):
         """Fetch news from RSS feeds"""
@@ -116,7 +113,7 @@ class DailyNewspaper:
         for feed_url in self.config['rss_feeds']:
             try:
                 feed = feedparser.parse(feed_url)
-                news_items.extend(feed.entries[:5])  # Get top 5 stories from each feed
+                news_items.extend(feed.entries[:self.config['news_items_per_feed']])  # Get top 5 stories from each feed
             except Exception as e:
                 self.logger.error(f"Error fetching RSS feed {feed_url}: {e}")
         return news_items

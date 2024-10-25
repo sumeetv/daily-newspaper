@@ -32,7 +32,7 @@ No tasks due today.
 ## News Headlines
 {% if news %}
 **Top Stories:**
-{% for item in news[:5] %}
+{% for item in news %}
 ### {{ item.title }}
 {{ item.summary|truncate(200) }}
 [Read More]({{ item.link }})
